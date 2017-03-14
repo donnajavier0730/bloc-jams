@@ -33,9 +33,7 @@ body.landing {
 }
 
 .point {
-    /*display: table-cell;place the elements in a table-like layout (think of a spreadsheet), with each selling point sitting side-by-side in a grid.*/
     position: relative;
-/*    width: 33.3%;*/
     padding: 2rem;
     text-align: center;
 }
