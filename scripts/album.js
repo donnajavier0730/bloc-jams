@@ -63,15 +63,29 @@ var setCurrentAlbum = function(album) {
 };
 
 
+//var findParentByClassName = function(element, targetClass) {
+//    if (element) {
+//        var currentParent = element.parentElement;
+//        while (currentParent.className !== targetClass && currentParent.className !== null) {
+//            currentParent = currentParent.parentElement;
+//        }
+//        return currentParent;
+//    }
+//};
+//ASSIGNMENT
 var findParentByClassName = function(element, targetClass) {
     if (element) {
         var currentParent = element.parentElement;
-        while (currentParent.className !== targetClass && currentParent.className !== null) {
-            currentParent = currentParent.parentElement;
-        }
+            if(element.currentParent === null){
+                console.log("No parent found");
+            } 
+            if(currentParent.className !== targetClass && currentParent.className !== null){
+                    console.log("No parent found with that class name");
+            }
         return currentParent;
     }
 };
+//END OF ASSIGNMENT
 
 var getSongItem = function(element) {
     switch (element.className) {
@@ -117,23 +131,22 @@ window.onload = function() {
     setCurrentAlbum(albumPicasso);
     
 songListContainer.addEventListener('mouseover', function(event) {
+    if (event.target.parentElement.className === 'album-view-song-item') {
+        var songItem = getSongItem(event.target);
 
-if (event.target.parentElement.className === 'album-view-song-item') {
-    var songItem = getSongItem(event.target);
-
-  if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
-      songItem.innerHTML = playButtonTemplate;
-   }
-}
+      if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
+          songItem.innerHTML = playButtonTemplate;
+       }
+    }
 });
    
 for (var i = 0; i < songRows.length; i++) {
    songRows[i].addEventListener('mouseleave', function(event) {
        var songItem = getSongItem(event.target);
-         var songItemNumber = songItem.getAttribute('data-song-number');
-       if (songItemNumber !== currentlyPlayingSong) {
-             songItem.innerHTML = songItemNumber;
-         }
+       var songItemNumber = songItem.getAttribute('data-song-number');
+           if (songItemNumber !== currentlyPlayingSong) {
+                 songItem.innerHTML = songItemNumber;
+             }
    });
    songRows[i].addEventListener('click', function(event) {
          clickHandler(event.target);
