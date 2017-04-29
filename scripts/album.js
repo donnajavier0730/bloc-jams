@@ -284,5 +284,10 @@ $(document).ready(function() {
     
 });
 
-//***************Implement the nextSong() Function-last
+//***************assignment21:
+
+//function setCurrentTimeInPlayerBar(currentTime) {
+//    currentTime.text = 
+//}
+
 
