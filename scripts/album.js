@@ -284,5 +284,31 @@ $(document).ready(function() {
     
 });
 
-//***************Implement the nextSong() Function-last
+//Assignment
+// ADDED CODE
+var $playButton = $('.main-controls .play-pause');
+
+// ADDED CODE
+    
+$(document).ready(function() {
+    setCurrentAlbum(albumPicasso);
+    $previousButton.click(previousSong);
+    $nextButton.click(nextSong);
+    $playButton.click(togglePlayFromPlayerBar);
+});
+
+
+function togglePlayFromPlayerBar(){
+     
+		if (currentSoundFile.isPaused()) {
+               $(this).html(pauseButtonTemplate);
+               $('.main-controls .play-pause').html(playerBarPauseButton);
+               currentSoundFile.play();
+           } else {
+               $(this).html(playButtonTemplate);
+               $('.main-controls .play-pause').html(playerBarPlayButton);
+               currentSoundFile.pause();   
+            }
+	
+};
 
